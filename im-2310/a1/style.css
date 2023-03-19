@@ -1,0 +1,30 @@
+a:link {
+    color: #8185fe;
+    }
+    
+    a:visited {
+    color: #000000;
+    }
+    
+    a:hover {
+    color: #2123e2;
+    }
+    
+    a:active {
+    color: yellow;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;  
+}
+  
+  .flex-container > div {
+    background-color: #2123e2;
+    border-radius: 25px;
+    margin: 35px;
+    padding: 50px;
+    font-size: 20px;
+}
