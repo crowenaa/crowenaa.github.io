@@ -25,9 +25,9 @@
       ". . . . ";
   }
   
-/*Colours for #box-one and #box-three are colours of the sunseting sky*/
-/*Colours for #box-two and #box-four are colours of the sunseting sky with a white colour indicating the sun*/
-/*Colours for #box-five are colours of the wave as linear gradients with a overlay radial gradient indicating the reflection of the sunset*/
+/*Colours for #box-one and #box-three are colours of the sunseting sky with the use of a radial gradient*/
+/*Colours for #box-two and #box-four are colours of the sunseting sky with a white colour center indicating the sun*/
+/*Colours for #box-five are colours of the wave as linear gradients and an overlay radial gradient indicating the reflection of the sunset*/
 
   #box-one{
     background-image: radial-gradient(circle at 100% 100%, rgba(212,87,43,0.9) 10%, rgba(246,149,52,0.8) 40%,rgba(24,75,106,0) 100%);
