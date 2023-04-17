@@ -1,0 +1,262 @@
+/* z-index order */
+
+*{
+  box-sizing: border-box;
+  background-origin: border-box;
+  margin: 0;
+}
+
+/* Basis for colour palette comes from 1bit Monitor Glow Palette by Polyducks */
+/* https://lospec.com/palette-list/1bit-monitor-glow */
+/* you're welcome to change the colours if you want or any of the other general page style */
+:root{
+  --col-01:#F2E3DB;
+  --col-02:#41644A;
+  --col-03:#263A29;
+  --col-04:#E86A33;
+  --col-05:#000000;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--col-01);
+  color: var(--col-02);
+  padding: 2vw;
+}
+
+.FilterSection{
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: var(--col-03);
+    border-radius: 24px;
+    z-index: 1;
+  }
+  
+  .FilterSection ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .FilterSection ul li{
+    margin: 0;
+    padding: 0 50px;
+    float: left;
+    position: relative;
+  }
+  
+  .FilterSection ul li a{
+    text-decoration: none;
+    color: var(--col-04);
+    padding: 12px 16px;
+    display: flex;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
+  
+  .FilterSection ul li:hover ul{ display:block;}
+  
+  .FilterSection ul li ul{
+    position: absolute;
+    display: none;
+  }
+  
+  .FilterSection ul li ul li{
+    padding: 0;
+    background: var(--col-03);
+    line-height: 40px;
+    width: 100%;
+  }
+
+.FilterSection ul li ul li a:hover {background-color: var(--col-02);}
+
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+}
+
+/*
+  i've set up a basic flexbox for each recipe container - you might want to change some of the 
+  flex properties here on the container or on the individual flex items depending on how you want to style them
+*/
+.RecipeBox {
+  display: flex;
+  flex-direction: column;
+  overflow: initial;
+  font-weight: 400;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+}
+
+div.RecipeBox:hover {
+  border: 1px solid var(--col-04);
+}
+
+.SelectedFilter{
+  color: white;
+}
+
+.RecipeLink {
+    align-items: center;
+    background-color:var(--col-03);
+    border-radius: 24px;
+    width: 80%;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 400;
+    height: 40px;
+    justify-content: center;
+    max-width: 100%;
+    padding: 2px 24px;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    z-index: 0;
+    margin: 10px 10px 10px 10px;
+} 
+
+.RecipeLink a:link {
+  color: var(--col-01);
+  text-decoration: none;
+}
+
+.RecipeLink a:visited {
+  color: var(--col-04);
+}
+
+.RecipeLink a:hover {
+  color: var(--col-04);
+}
+
+.RecipeLink a:active {
+  color: var(--col-04);
+}
+
+.RecipeName{
+  font-size: 20px;
+  font-weight: bolder;
+  color: var(--col-04);
+  padding-left: 12px;
+  padding-right: 12px;}
+
+.Author{
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--col-03);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.RecipeImageContainer{
+  position: relative;
+}
+
+.RecipeImg {
+  margin-right: 0;
+  margin-bottom: 0;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.Attribution{
+  font-size: 8px;
+  font-weight: light;
+  color: var(--col-03);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.Publisher{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.Cuisine{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;}
+
+.TimeToCook{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;}
+
+.SkillLevel{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;}
+
+.Course{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.Servings{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.Dietary{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.DatePublished{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.DateUpdated{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.SpecialEquipment{
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--col-05);
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+}
+
+
+
+
+
+
