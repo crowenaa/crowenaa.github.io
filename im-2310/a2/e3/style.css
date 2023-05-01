@@ -1,0 +1,369 @@
+/*
+  This one CSS file is imported into both index.html AND hosono.html so you need to be careful that it 
+  works for both.
+*/
+
+*{
+  box-sizing: border-box;
+  background-origin: border-box;
+  margin: 0;
+}
+
+:root{
+  /* first two colours come from Kuroi's Manga Pallete Palette */
+  /* https://lospec.com/palette-list/manga-pallete */
+  --col-01:#204051;
+  --col-02:#E7DED5;
+  --col-03:#84A9AC;
+  --col-04:#264752;
+  --col-05:#ccc;
+  --col-06:#000;
+  font-size: 16px;
+  /* scroll behaviour makes the <a> links to ids scroll to position over time rather than immediately */
+  scroll-behavior: smooth;
+}
+
+body{
+  padding: 1rem;
+  background-color: var(--col-02);
+  color: var(--col-01);
+  font-family: 'Fraunces', serif;
+}
+
+p{
+  font-family: 'Poppins', sans-serif;
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+
+
+nav {
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  padding: 1%;
+}
+
+nav a {
+  color: inherit;
+  transition: 0.25s ease;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  
+}
+
+nav ul li {
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+nav ul:hover a {
+  color: var(--col-06);
+}
+
+nav ul:hover a:hover {
+  color: var(--col-05);
+  box-shadow: 0 2px 0 0 currentcolor;
+}
+
+
+
+section{
+  margin-bottom: 2rem;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+h2{
+  font-size: 2rem;
+}
+
+p{
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+figcaption{
+  width: fit-content;
+}
+
+dl ul{
+  margin-bottom: 0;
+}
+
+li{
+  font-size: 1rem;
+}
+
+dd{
+  padding-left: 60px;
+}
+
+li ul{
+  padding-left: 40px;
+}
+
+.img-wrapper{
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.img-figure{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-img{
+  width: 80%;
+}
+
+.res-columns{
+  column-width: 25rem;
+}
+
+#mode-button{
+  float: right;
+  /* note the use of position: sticky to keep the button on the page even with scrolling */
+  position: sticky;
+  top: 1rem;
+  text-align: right;
+}
+
+#light {
+  position: absolute;
+  top: 30%;
+  left: -17%;
+  width: 100%;
+  color: white;
+  z-index: 2;
+}
+
+#dark {
+  position: absolute;
+  top: 30%;
+  left: -62%;
+  width: 100%;
+  color: white;
+  z-index: 2;
+}
+
+.toggle {
+  margin:0.25rem 0 0 2rem;
+  position: sticky;
+  top:-1px;
+  width: 3rem;
+  height: 1.7rem;
+  float: right;
+  z-index: 999;
+  cursor: pointer;
+}
+
+
+.toggle input {
+  display: none;
+}
+
+.roundbutton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: #33455e;
+  display: block;
+  transition: all 0.3s;
+  border-radius: 1.7rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.roundbutton:before {
+  position: absolute;
+  content: "";
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 100%;
+  display: block;
+  left: 0.25rem;
+  bottom: 0.25rem;
+  background-color: white;
+  transition: all 0.3s;
+}
+
+input:checked + .roundbutton {
+  background-color: #FF6E48;
+}
+
+input:checked + .roundbutton:before  {
+  transform: translate(1.3rem, 0);
+}
+
+/* code for loading page */
+
+#load-body{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* changing button to look like a link */
+#load-link{
+  margin: 3%;
+  cursor: pointer;
+  width: 140px;
+  height: 45px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 400;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  outline: none;
+}
+
+#load-link:hover {
+  background-color: #68A7AD;
+  box-shadow: 0px 15px 20px #205E61;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+/* throbber while page is fake loading */
+#load-throbber{
+  display: flex;
+  flex-direction: column;
+          /*the width, height and background-color give it a shape on the page without any content inside - 
+          these value are arbitrary, please change to create your own design*/  
+
+          /*we also initially set display to none so it only shows once the link is clicked*/ 
+  display: none;
+  padding: 5%;
+}
+
+#load-throbber div {
+  height: 30px;
+  aspect-ratio: 2.5;
+  --_g: no-repeat radial-gradient(farthest-side,#000 90%,#0000);
+  background:var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 20% 50%;
+  animation:d3 1s infinite linear; 
+}
+
+a {
+  box-shadow: inset 0 0 0 0 var(--col-03);
+  color: var(--col-03);
+	padding: 0 .25rem;
+	margin: 0 -.25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+a:hover {
+  color: var(--col-04);
+  box-shadow: inset 200px 0 0 0 var(--col-03);;
+}
+
+a {
+	color: var(--col-03);
+	font-weight: 800;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+#btn {
+  --offset: 50px; 
+  position: sticky;
+  bottom: 20px;      
+  margin-right: 10px; 
+  place-self: end;
+  margin-top: calc(100vh + var(--offset));
+
+  width: 140px;
+  height: 45px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 400;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+#btn:hover {
+  background-color: #68A7AD;
+  box-shadow: 0px 15px 20px #205E61;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+@keyframes d3 {
+  0%     {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+  16.67% {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+  33.33% {background-position: calc(0*100%/3) 100%,calc(1*100%/3) 0   ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+  50%    {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 100%,calc(2*100%/3) 0   ,calc(3*100%/3) 50% }
+  66.67% {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 100%,calc(3*100%/3) 0   }
+  83.33% {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 100%}
+  100%   {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+}
+
+
+/* Media Queries */
+
+/* medium devices 600 - 992 */
+@media only screen and (min-width: 600px) {
+  :root{
+    font-size: 20px;
+  }
+  
+  .img-wrapper{
+    width: 75%;
+    margin: 1.5rem auto;
+  }
+
+  nav{
+    margin: auto;
+  }
+
+}
+
+/* medium devices 992 + */
+@media only screen and (min-width: 992px) {
+  :root{
+    font-size: 24px;
+  }
+
+  .img-wrapper{
+    max-width: fit-content;
+    float: right;
+    margin: 1.5rem;
+  }
+
+}
+
+@media (prefers-reduced-motion) {
+  :root{
+    scroll-behavior: auto;
+  }
+}

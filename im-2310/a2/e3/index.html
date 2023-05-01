@@ -1,19 +1,67 @@
 <!DOCTYPE html>
 
+<!-- 
+
+  PROVIDE MEANINGFUL FEEDBACK TO THE FOLLOWING ELEMENTS:
+  1) <button> with the id of load-link on the loading page (index.html)
+    - Buttons can be made to stand out more than hyperlinks, making them easier to find and click on.
+    - It is also more flexible than hyperlinks in terms of design. This can help to make them more visually appealing and engaging to users.
+    - Using buttons for links can help to create a consistent user experience across a website. By using a consistent button design, users can quickly identify links and easily navigate the website. Likewise to what I have done, utilising the same button design for the 'back to top' button. 
+  2) <div> with the id of load-throbber on the loading page (index.html)
+    - I have chosen this loader animation because they are less distracting to users. Since the animation is simple and repetitive, it is less likely to draw the user's attention away from the content of the page. This can help to maintain the user's focus and prevent them from becoming frustrated or impatient while waiting for the page to load. Additionally, these simple dot loaders are easy to fit most design of websites.
+  3) <li> inside of the <ol> inside of the <nav> on the information page (hosono.html)
+    - I've styled the list in the <nav> similar to a navigation bar. Implementing two strong colours so that users will be able to identify the item is interactive and clickable. This can help to make the navigation bar more intuitive and easier to use.
+    - Using different colors for the navigation item during hover can also help to differentiate between the different items and make it easier for users to locate the item they are interested in.
+  4) <button> with the id of mode-button on the information page (hosono.html)
+    - I've added a toggle switch to the mode-button by slightly tweaking the javascript (adding a addEventListener function). 
+    - One reason to use toggles for light and dark mode buttons is that they are easy to use and provide a clear visual indication of the current mode
+    - Toggles also provide clear visual feedback to the user by changing color or shape to indicate whether an option is on or off. This feedback makes it easy for users to understand the state of the option and adjust it if needed.
+  5) switchModes() function - hint you can add a transition CSS property to the <body> and it will be inherited 
+     by all the elements inside, so when custom CSS variables are changed it will apply transition
+    - Allows me to create modular code that can be easily reused and adapted for different modes or themes. This can save time and effort when implementing multiple modes on a website.
+    - I can  also optimize the code and reduce redundancy. Instead of writing separate code for each mode or theme
+    - It also helps future-proof the code by allowing for the addition of new modes or themes in the future. This can save time and effort in the long run by allowing for easy updates to the website.
+
+-->
+
 <html lang="en">
-    
-    <head>
 
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
 
-        <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-    </head>
+    <title>Loading Page</title>
 
-    <body>
+    <script src="./fakeLoad.js" defer></script>
 
-    </body>
+  </head>
+
+  <body id="load-body">
+
+      <h1>Haruomi Hosono</h1>
+      <!--
+        Typically I'd use an <a> here but as we're faking a load time I'm using a <button> instead.  If it was an 
+        <a> I would leave off the target attribute so that it would redirect the current tab.
+      -->
+      <!--
+        The function loadPageAfterDelay() is declared in the file fakeLoad.js - it takes a number value that sets the 
+        amount of time it takes in ms and a url to redirect to.
+      -->
+      <button id="load-link" onclick="loadPageAfterDelay(10000, './hosono.html')">Click Me!</button>
+      <div class="progress">
+        <div class="color"></div>
+      </div>
+      <!--
+        This is a div we're using for the throbber - if we wanted to do a % based loading bar there is an element 
+        called <progress> but as this one is just indicating a wait rather than providing direct feedback on progress I've 
+        opted for using a <div>.
+      -->
+      <div id="load-throbber">
+        <div class="dots"></div>
+      </div>
+
+  </body>
 
 </html>
