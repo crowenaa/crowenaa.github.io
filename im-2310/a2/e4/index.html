@@ -1,19 +1,85 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    
-    <head>
 
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
 
-        <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Player Experiment</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="playerControls.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <script src="script.js"></script>
+  </head>
 
-    </head>
+  <!--
+    COMMENT SECTION
+    1. Play/Pause
+        - The play/pause button also provides a way for users to control the timing and duration of the video, which is especially useful when they need to take a break or want to watch a video in shorter segments.
+    2. Mute/Unmute
+        - The mute and unmute functionality is important in a video player because it allows viewers to control the audio output of the video. By muting the audio, viewers can watch the video without disturbing others or without being disturbed by external noise. Unmuting the audio allows viewers to listen to the sound of the video, including dialogues, background music, and sound effects.
+    3. Progress Bar
+        - An essential feature of a video player because it provides users with a visual representation of their progress through the video, and enables them to control and navigate the video playback according to their preferences.
+        - Additionally, the progress bar can be used to monitor the buffering status of the video. If the video is buffering, the progress bar may pause or show a loading icon, indicating that the video is not yet fully loaded. (not incorporated in current project, will look into it in the future)
+    4. Volume Slider
+      - The volume slider is particularly useful because it enables users to adjust the volume to their specific needs, whether they prefer a louder or softer audio output.
+      - The volume slider is also important for accessibility purposes. Some viewers may have hearing impairments and require a higher volume to hear the audio clearly, while others may prefer a lower volume to avoid disturbing others or to prevent hearing damage.
+      - Moreover, the volume slider can help to improve the overall viewing experience by enabling users to balance the audio with other sounds in their environment.
+    5. Video time display
+      - The video time display shows viewers how much time has elapsed since the start of the video
+      - The video time display is particularly useful for viewers who want to keep track of their viewing time or need to stop watching the video at a particular time.
+      - Moreover, the video time display can help viewers to navigate the video more efficiently. By looking at the time display, viewers can quickly identify specific parts of the video they want to watch, skip over content they are not interested in, or rewind to re-watch a particular scene.
+    6. Skip forward/backwards
+      -  enables viewers to navigate through the video quickly and efficiently.
+      -  find the parts they want to watch without having to sit through the entire video
+      - It also provides viewers with control over their viewing experience, allowing them to skip over content they are not interested in or to revisit scenes they particularly enjoyed.
+      -  use the skipping feature to rewind and re-watch parts of the video they missed
+    7. Fullscreen
+      - The full-screen feature is an essential feature in a video player because it enables viewers to view the video in a larger and more immersive format. 
+      - It allows viewers to appreciate the visuals of the video more fully and immerse themselves in the content.
+      - viewers with visual impairments may benefit from the full-screen feature as it enables them to view the video content more clearly and reduces visual distractions.
+  -->
 
-    <body>
+  <body>
 
-    </body>
+    <!-- this element holds all of the media player -->
+    <div class="video-player-wrapper" id="videoPlayer">
+      <!-- this element holds the video element and the overlay -->
+      <div class="video-element-wrapper" id="videoElementWrapper">
+
+        <video id="videoElement" controls>
+          <source src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4" type="video/mp4">
+        </video>
+
+        <img id="videoPlayOverlay" src="./icons/play.svg">
+
+      </div>
+      <progress class="video-progress-bar" id="progressBar" value="0"></progress>
+
+      <!-- this element holds all of the custom controls -->
+      <div class="video-controls-wrapper" id="controlsWrapper">
+
+<!-- video-control-button to change buttons attribute all together-->
+        <button class="video-control-button" id="muteButton"></button>
+
+        <input class="volume" id="volume" value="1" type="range" max="1" min="0" step="0.01">
+
+        <div class="video-timeline" id="videoTime">
+          <span>00:00</span>
+        </div>
+
+        <button class="video-control-button" id="backButton"></button>
+        
+        <button class="video-control-button" id="playButton"></button>
+        
+        <button class="video-control-button" id="forwardButton"></button>
+
+        <button class="video-control-button" id="fullscreenButton"></button>
+
+      </div>
+
+    </div>
+
+  </body>
 
 </html>
