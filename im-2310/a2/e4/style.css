@@ -16,6 +16,10 @@
   --border: 1px solid var(--col-02);
 }
 
+body{
+  background-color: var(--col-01);
+}
+
 .video-player-wrapper{
   display: flex;
   flex-direction: column;
