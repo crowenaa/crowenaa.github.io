@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style.css">
+        <script src="modeSwitch.js" defer></script>
+        <script src="./fakeLoad.js" defer></script>
+
+
+        <style>
+            section:before{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 100px;
+                background: linear-gradient(to top, var(--col-01) , transparent);
+                z-index: 10000;
+            }
+
+            .pageZero{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: transparent;
+            }
+
+            .pageZero img{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                pointer-events: none;
+            }
+
+            .pageZero img#cloudLeft{
+                top: -500px;
+                transform: translateX(-282px);
+                opacity: 80%;
+            }
+
+            .pageZero img#cloudRight{
+                top: -500px;
+                transform: translateX(305px);
+                opacity: 80%;
+            }
+
+            .pageOne{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background: url('./images/main.png') no-repeat;
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+
+            .pageOne #text{
+                position: absolute;
+                bottom: 40px;
+                left: 60px;
+            }
+
+            .pageOne img{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                pointer-events: none;
+            }
+
+            .pageTwo{
+                position: relative;
+            }
+
+        
+        .pageTwo{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .pageTwo #text{
+            position: absolute;
+            top: 40px;
+            left: 60px;
+        }
+
+        .slide-container {
+        position: absolute;
+        width: 270px;
+        top: 50%;
+        }
+
+        .slider {
+        appearance: none;
+        width: 250%;
+        height: 5px;
+        background: url('./images/16.png') no-repeat;
+        outline: none;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        transform: rotate(-90deg);
+        }
+
+        .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 500px;
+        height: 900px;
+        border: 0;
+        border-radius: 50%;
+        background: url('./images/16.png') no-repeat;
+        background-size: contain;
+        background-position: center center;
+        transform: rotate(90deg);
+        cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+        width: 500px;
+        height: 900px;
+        border: 0;
+        border-radius: 50%;
+        background-size: contain;
+        background: url('./images/16.png') no-repeat;
+        background-position: center center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        }
+
+        .pageTwo img#soil{
+            width: 90%;
+            opacity: 100;
+            transform: translateY(0px) translateX(200px) rotate(90deg);
+        }
+
+        .pageTwo img#soil2{
+            width: 90%;
+            opacity: 100;
+            transform: translateY(0px) translateX(200px) rotate(90deg);
+        }
+
+        .pageThree{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #mode-button{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: transparent;
+        border-color: transparent;
+        }
+
+        #light {
+        position: absolute;
+        top: 30%;
+        left: -17%;
+        width: 100%;
+        color: white;
+        z-index: 2;
+        }
+
+        #dark {
+        position: absolute;
+        top: 30%;
+        left: -62%;
+        width: 100%;
+        color: white;
+        z-index: 2;
+        }
+
+        .toggle {
+        margin:0.25rem 0 0 2rem;
+        position: sticky;
+        top:-1px;
+        width: 25rem;
+        height: 15rem;
+        float: right;
+        }
+
+        #pullchain {
+            display: block;
+            width: 20px;
+            height: 200px;
+            position: absolute;
+            z-index: 4;
+            left: 60px;
+            top: 30px;
+            overflow: visible;
+            cursor: pointer;
+        }
+        #pullchain:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 7px;
+            width: 0;
+            height: 100%;
+            border-left: 5px dotted #f3a808;
+        }
+        #pullchain:after {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: #f3a808;
+            bottom: 0px;
+            left: 0px;
+            border-radius: 15px;
+        }
+        #pullchain:active {
+            top: 45px;
+        }
+ 
+
+        .pageFour{
+            height: 203vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            transform: rotate(-90deg);
+            perspective: 10px;
+        }
+
+        .pageFour::-webkit-scrollbar {
+        display: none;
+        }
+
+        .p-circles-wrapper{
+            position: relative;
+            height: 300%;
+            transform: rotate(90deg);
+            transform-style: preserve-3d;
+        }
+
+        #circleOne {
+        /* this lets us place them outside of document flow */
+        position: absolute;
+        width: 100vh;
+        height: 100vh;
+        right: 163%;
+        top: 30%;
+        background: url('./images/7.png') no-repeat;
+        background-size: contain;
+        /* this is where we set how far back in the z-plane they should be placed */
+        transform: translateZ(-2px);
+        }
+        #circleTwo {
+        position: absolute;
+        width: 100vh;
+        height: 100vh;
+        right: 173%;
+        top: 27.5%;
+        border-radius: 15vh;
+        background: url('./images/21.png') no-repeat;
+        background-size: contain;
+        transform: translateZ(-5px) scale(1.5);
+        }
+        #circleThree {
+        position: absolute;
+        width: 50vw;
+        height: 50vh;
+        right: 135%;
+        top: 25%;
+        background: url('./images/19.png') no-repeat;
+        background-size: contain;
+        transform: translateZ(-10px) scale(2.0) /*scale to maintain size*/;
+        }
+
+        #dayOne {
+        /* this lets us place them outside of document flow */
+        position: absolute;
+        width: 100vh;
+        height: 100vh;
+        left: 104%;
+        top: 30%;
+        background: url('./images/10.png') no-repeat;
+        background-size: contain;
+        /* this is where we set how far back in the z-plane they should be placed */
+        transform: translateZ(-2px);
+        }
+        #dayTwo {
+        position: absolute;
+        width: 100vh;
+        height: 100vh;
+        left: 101%;
+        top: 27.5%;
+        background: url('./images/13.png') no-repeat;
+        background-size: contain;
+        transform: translateZ(-5px) scale(1.5);
+        }
+        #dayThree {
+        position: absolute;
+        width: 100vh;
+        height: 100vh;
+        left: 98%;
+        top: 20%;
+        background: url('./images/9.png') no-repeat;
+        background-size: contain;
+        transform: translateZ(-10px) scale(2.0) /*scale to maintain size*/;
+        }
+
+        .pageFour #text{
+            position: absolute;
+            bottom: 150px;
+            left: 500px;
+        }
+        
+
+        #myDIV{
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            width: 50%;
+        }
+
+        #myDIV2{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+        }
+
+        #status{
+            position: absolute;
+            left: 650px;
+        }
+
+        .wave {
+        left: 50%;
+        top: -20;
+        position: absolute;
+        animation: mymove 5s infinite;
+        transform: translateZ(-2px) translateY(-400px);
+        }
+
+        @keyframes mymove {
+        from {top: 0px;}
+        to {top: 200px;}
+        }
+
+        .pageFive {
+            padding: 20px;
+            font-size: medium;
+            text-align: center;
+        }
+
+        #load-link {
+            font-family: 'Pangolin', cursive;
+            visibility: inherit; 
+            background-color: var(--col-01);
+            border: 2px solid #422800;
+            border-radius: 30px;
+            box-shadow: #422800 4px 4px 0 0;
+            color: #422800;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 0 18px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            margin: 40px;
+            }
+
+            #load-link:hover {
+            background-color: #fff;
+            }
+
+            #load-link:active {
+            box-shadow: #422800 2px 2px 0 0;
+            transform: translate(2px, 2px);
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <section class="pageZero">
+            <img src="./images/19.png" id="cloudLeft">
+            <img src="./images/19.png" id="cloudRight">
+        </section>
+        
+        <section class="pageOne">
+            <h1 id="text">You are a tree so am I</h1>
+        </section>
+
+        <section class="pageTwo">
+            <h1 id="text">Born from the same seedlings, but completely different beings</h1>
+                <div class="slide-container">
+                    <div class="div1"><input type="range" class="slider"></div>
+                    <img src="./images/25.png" id="soil">
+                    <img src="./images/25-1.png" id="soil2">
+                </div>
+            </div>    
+        </section>
+
+        <section class="pageThree">
+            <img src="./images/night.png" id="myDIV">
+            <img src="./images/day.png" id="myDIV2">
+            <h1 span id="status">We've gone through night...</span></h1>
+            <button onclick="switchModes()" id="mode-button">
+                    <div class="toggle">
+                        <div id="pullchain"></div>
+                    </div>
+              </button>
+        </section>
+
+        <section class="pageFour">
+            <div class="p-circles-wrapper">
+                <div id="circleThree"></div>
+                <div id="circleTwo"></div>
+                <div id="circleOne"><h1 id="text">And from this ground where I stand,</h1></div>
+                <div id="dayOne"><h1 id="text">I'll always be rooting for you.</h1></div>
+                <div id="dayTwo"></div>
+                <div id="dayThree"></div>
+            </div>
+            <canvas id="myCanvas" width="200" height="100"></canvas>
+            <div class="wave"><img src="./images/23.png"></div>
+        </section>
+
+        <section class="pageFive">
+            <button id="load-link" onclick="loadPageAfterDelay(1000, './index.html')">The End</button>
+            <div class="progress"></div>
+            <div id="load-throbber"></div>
+
+            <p>A storyline-based web browser that uses a narrative structure to guide users through the browsing experience was my choice for this assignment. The browser may be designed around a particular storyline or theme, and users may be encouraged to explore different parts of the narrative by clicking on links or following prompts. Each page might contain different types of media, such as text, images, or videos, that help to convey the narrative and keep users engaged. The browser also include interactive elements such as quizzes and interactive buttons that allow users to engage with the story and explore different aspects of the narrative was all of my initial idea. I have incorporated Emily Wiputri's Two Trees as my storyline in this project.
+
+            My pairings, playful and feedback works very closely to create my browser project with an effective way to engage users in a more lighthearted way.
+            
+            Moving on as I was creating this browser I have included a flip book to start out the "storybook" concept. As users flip the book they will be able to enter their name as my part of customization in this project. Users will be then guided into a scrolling style storybook. In this story, I have added multiple interactions like dragging, parallax scrolling and a mode switch to narrate the short story to match the abstract adjective that I have chosen - Playful. Moreover, I've utilised a much brighter theme for this project to enhance playfulness.
+            
+            The interaction design principle 'feedback' is to make it clear to the user what action has been taken and what has been accomplished. Which I try to accomplish in this project through the name customisation primarily. Allowing users to be able to see what they have typed.
+            
+            As I was coding, there were some changes made compared to the initial prompt presented in class. For such, I intended to create a character customization (which I later planned to make it a season customization to suit the storyline). However, I was not able to complete this feature due to time constrain. I'm well aware that I could master this with the mode switch function and will love to pursue this in future projects. Some other obstacle I ran to was the draggable plant which I initially researched many ways to keep it moving in a specific path but ended up using a input range to manipulate this function. Lastly and I personally find the hardest was to master the horizontal parallax scrolling as I needed to understand different directions of different variable.
+            
+            Some things that I wish to improve after this project will be to perfect styling methods as in my opinion is the hardest to master. Next, I will also like to master in organising of my codes and commenting its functions. To achieve all of this, I will start focusing on writing clean and modular code, practice problem-solving regularly, seek feedback from peers, learn from others' code, embrace documentation, and stay updated with new technologies and best practices.
+            </p>
+            <br>
+            <p>Refrence:<br>
+                Behance. (n.d.). Two trees - short story. Behance. https://www.behance.net/gallery/163444699/Two-Trees-Short-Story <br>
+                Case studies. Case Studies. (n.d.). https://www.makemepulse.com/case-studies/category/experiential/ <br>
+                The Magical Pantry. Kerrygold. (n.d.). https://www.themagicalpantry.com/ <br>
+                Turn the lamp on! - codepen. (n.d.). https://codepen.io/designcouch/pen/BaVRLv </p>
+        </section>
+        
+        <script>
+            let cloudLeft = document.getElementById('cloudLeft');
+            let cloudRight = document.getElementById('cloudRight');
+
+            window.addEventListener('scroll', () => {
+                let value = window.scrollY;
+                cloudLeft.style.left = value * -1.5 + 'px' ;
+                cloudRight.style.left = value * 1.5 + 'px' ;
+            });
+        </script>
+    
+    </body>
+
+
+</html>

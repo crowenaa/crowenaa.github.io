@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  :root{
+
+    --col-01:#FFFDF1;
+    --col-02:#A8AC73;
+    --col-03:#7BBDD1;
+    --col-04:#DB7E75;
+    --col-05:#E4B370;
+    --col-06:#000;
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  
+
+  body{
+    overflow-x: hidden;
+    font-family: 'Pangolin', cursive;
+    background-color: var(--col-01);
+    color: var(--col-05);
+    font-size: 30px;  
+  }
